@@ -13,6 +13,7 @@ sudo apt-get update >/dev/null 2>&1
 
 echo "Installing dependencies"
 sudo apt-get install -y git buildbot python-pip python-dev >/dev/null 2>&1
+sudo pip install txgithub
 
 echo "Upgrading Buildbot"
 sudo pip install --upgrade buildbot >/dev/null 2>&1
