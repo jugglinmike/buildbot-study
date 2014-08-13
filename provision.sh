@@ -14,7 +14,7 @@ sudo apt-get install -y git buildbot >/dev/null 2>&1
 echo "Configuring build master"
 cd /var/lib/buildbot/masters
 sudo buildbot create-master master
-sudo mv master/master.cfg.sample master/master.cfg
+sudo ln -s /vagrant/master.cfg master
 sudo chown -R buildbot:buildbot master
 sudo cp /vagrant/daemons/buildmaster /etc/default
 
