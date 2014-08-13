@@ -5,11 +5,17 @@ set -e
 BOT_USER=${BOT_USER:-buildbot}
 
 echo "Updating package repository"
+# As of this writing, Utopic is the only Ubuntu release with the latest version
+# of BuildBot (0.8.9)
+cat <<EOF >> /etc/apt/sources.list
+deb http://us.archive.ubuntu.com/ubuntu/ utopic universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ utopic universe
+EOF
 sudo apt-get update >/dev/null 2>&1
 
 echo "Installing dependencies"
 #sudo apt-get install -y git build-essential python-dev python-pip >/dev/null 2>&1
-sudo apt-get install -y git buildbot >/dev/null 2>&1
+sudo apt-get install -y git buildbot/utopic >/dev/null 2>&1
 
 echo "Configuring build master"
 cd /var/lib/buildbot/masters
